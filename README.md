@@ -49,33 +49,34 @@ Right now, all users can access all user show pages even if they're not logged i
 What if a logged in user wants to access the login or signup pages? Should we do anything about that?
 
 ## Logging out a user
-Delete and destroy the session info!!
+Add routes, controller actions, and form to delete / destroy the session info!!
 
 ## Wrap Up
 What in the world did we just do?
 1. Create a users table and model (username, password_digest, `has_secure_password`)
 2. Add routes for users (new, create, show)
 3. Add controller actions and strong params for creating a user
-  - new: just show me the form OK
-  - create: if the user is valid, add them to the db and then redirect to show
-  - show: show the user ONLY if the user is logged in and the param has a matching id (before_action)
+    - new: just show me the form OK
+    - create: if the user is valid, add them to the db and then redirect to show
+    - show: show the user ONLY if the user is logged in and the param has a matching id (before_action)
 4. Create views for the user
-  - new: form
-  - show: username (really exciting page!)
+    - new: form
+    - show: username (really exciting page!)
 5. Log in the user (authenticate, sessions)
-  - Create routes for sessions (new, create)
-  - Add supporting controller actions (new, create)
-  - Create the login form
+    - Create routes for sessions (new, create)
+    - Add supporting controller actions (new, create)
+    - Create the login form
 6. Authorize access for users
-  - Use before_action to check if a user is logged in
-    - If logged in, let them access certain pages
-    - Otherwise redirect that silly saussage to the login page (Get out of there Jonathan!)
+    - Use before_action to check if a user is logged in
+        - If logged in, let them access certain pages
+        - Otherwise redirect that silly saussage to the login page (Get out of there Jonathan!)
 7. Log the user out
-  - Delete / destroy the session!
-  - Add logout form to users show page
+    - Add delete route to sessions
+    - Delete / destroy the session in the controller
+    - Add logout form to users show page
 8. Refactor any shared methods between UsersController and SessionsController into ApplicationController
-  - Cuz inheritance
-  - and DRY
+    - Cuz inheritance
+    - and DRY
 
 ## Security chat (if we have the time)
 - What are the limitations of tracking user sessions using a user id?
