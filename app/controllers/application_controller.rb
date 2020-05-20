@@ -1,10 +1,11 @@
 class ApplicationController < ActionController::Base
   def login(user)
     session[:user_id] = user.id
+    redirect_to profile_path
   end
 
   def current_user
-    @current_user ||= User.find_by_id(session[:user_id])
+    User.find_by_id(session[:user_id])
   end
 
   def logged_in?
@@ -16,6 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in
-    redirect_to user_path(current_user) if logged_in?
+    redirect_to profile_path if logged_in?
   end
 end
