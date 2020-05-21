@@ -12,6 +12,8 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:user][:password])
       login(@user)
     else
+      # make sure user model available for form if user is nil
+      @user = User.new(username: params[:user][:username])
       flash.now[:error] = 'Incorrect username or password'
       render :new
     end

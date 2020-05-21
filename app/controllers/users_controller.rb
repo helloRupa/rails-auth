@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # Logged in users will be sent to profile page
+  # Logged in users will be sent to profile page - this is just being extra
   before_action :logged_in, only: [:new, :create]
   # Not logged in users will redirect to login page
   before_action :not_logged_in, only: [:show]
