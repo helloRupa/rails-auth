@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by_username(params[:username])
+    @user = User.find_by_username(params[:user][:username])
 
-    if @user && @user.authenticate(params[:password])
+    if @user && @user.authenticate(params[:user][:password])
       login(@user)
     else
       flash.now[:error] = 'Incorrect username or password'
