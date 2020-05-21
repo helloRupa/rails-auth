@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  # Logged in users will be sent to profile page
   before_action :logged_in, only: [:new, :create]
+  # Not logged in users will redirect to login page
   before_action :not_logged_in, only: [:show]
 
   def new
@@ -16,6 +18,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # We can set user based on the cookie, no need for id param in URL!
   def show
     @user = current_user
   end

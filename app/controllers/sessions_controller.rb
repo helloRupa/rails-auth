@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
+  # logged in users redirect to profile page
   before_action :logged_in, only: [:new, :create]
-  before_action :not_logged_in, only: [:destroy]
 
   def new
     @user = User.new
