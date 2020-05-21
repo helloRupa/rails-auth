@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   # Since we aren't relying on the id in a URL to show the correct user, let's change it to a profile
+  # If you want users to have access to other users' show pages, you'll need resources :users, only: [:show] instead
   get '/profile', to: 'users#show'
 
   # resources :sessions, only: [:new, :create, :destroy]

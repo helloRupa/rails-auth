@@ -22,4 +22,10 @@ class ApplicationController < ActionController::Base
   def logged_in
     redirect_to profile_path if logged_in?
   end
+
+  # if you wanted to do the traditional show page allowing users to see
+  # info on other users (we'd have to change our show route)
+  # def logged_in
+  #   redirect_to user_path(current_user) if logged_in?
+  # end
 end

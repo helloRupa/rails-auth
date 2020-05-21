@@ -23,6 +23,11 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  # If you want all logged in users to see other user's show pages
+  # def show
+  #   @user = User.find_by_id(params[:id])
+  # end
+
   private
 
   def user_params
