@@ -1,5 +1,5 @@
 <h1>Create User</h1>
-
+<%# it's not necessary to use a model, but it makes it easier to keep the username when details are incorrect %>
 <%= form_with model: @user, url: '/signup', method: 'post' do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username %>

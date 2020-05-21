@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :password, :password_confirmation
+  attr_writer :password, :password_confirmation
   # Let's ensure users have unique login names (usernames) since they log in with them
   # Let's also enforce minimum username and password lengths for safety
   validates :username, length: { minimum: 3 }, uniqueness: true
