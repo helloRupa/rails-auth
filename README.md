@@ -24,13 +24,15 @@ Volunteer time!! Tell us what you wrote.
 ## Authentication steps
 Rails gives us some "magic" called has_secure_password, which makes auth a lot easier to roll from scratch. However, it doesn't help us understand what's happening. Let's think about what we would need to create our own auth without has_secure_password. If you want to see the actual code, check out the branch `solution-long`.
 
-Thinking only about models:
+Before we authenticate, we must create! Thinking only about models:
 When a user reaches a signup page displaying fields for username, password, and password confirmation, what has to happen on the backend once submit is clicked? What fields might we need in our database? What methods are needed on the model?
 
 **Password storage and BCrypt conversation**
 
 Thinking only about models:
 What about clicking submit on the login page? Do we need any fields in the db for that? What methods are needed to confirm a successful login attempt?
+
+At a high level (thinking generally): what else needs to happen for a user to be authenticated?
 
 ## Routes, controller actions, and views for signup: Users
 We need the user to see a signup form (new), have their info added to the database (create), and then be redirected to their special page (show)
@@ -51,6 +53,9 @@ What if a logged in user wants to access the login or signup pages? Should we do
 ## Logging out a user
 Add routes, controller actions, and form to delete / destroy the session info!!
 
+## Routes
+How much sense do our routes make to our users? And us, because we also matter.
+
 ## Wrap Up
 What in the world did we just do?
 1. Create a users table and model (username, password_digest, `has_secure_password`)
@@ -58,13 +63,15 @@ What in the world did we just do?
 3. Add controller actions and strong params for creating a user
     - new: just show me the form OK
     - create: if the user is valid, add them to the db and then redirect to show
-    - show: show the user ONLY if the user is logged in and the param has a matching id (before_action)
+    - show: show the user ONLY if the user is logged in (before_action)
 4. Create views for the user
     - new: form
     - show: username (really exciting page!)
 5. Log in the user (authenticate, sessions)
     - Create routes for sessions (new, create)
     - Add supporting controller actions (new, create)
+        - new: just show me the form OK
+        - create: find user and if they exist, check for matching password, then redirect to user show
     - Create the login form
 6. Authorize access for users
     - Use before_action to check if a user is logged in
